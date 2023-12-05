@@ -1,4 +1,4 @@
-@Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
+@Suppress("DSL_SCOPE_VIOLATION")
 plugins {
     alias(libs.plugins.com.android.application)
     alias(libs.plugins.org.jetbrains.kotlin.android)
@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace = "com.fernanda.cstv"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.fernanda.cstv"
@@ -51,6 +51,9 @@ android {
 }
 
 dependencies {
+    implementation(project(path = ":di"))
+    implementation(project(path = ":uikit"))
+    implementation(project(path = ":navigation"))
 
     implementation(libs.core.ktx)
     implementation(libs.lifecycle.runtime.ktx)

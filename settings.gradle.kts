@@ -15,4 +15,9 @@ dependencyResolutionManagement {
 
 rootProject.name = "CSTV"
 include(":app")
- 
+include(":data")
+include(":data_remote")
+include(":di")
+include(":domain")
+include(":navigation")
+include(":uikit")

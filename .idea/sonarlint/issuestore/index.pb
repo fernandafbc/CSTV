@@ -112,3 +112,9 @@ E
 navigation/.gitignore,6\1\61a6fea6b136ac36934dfca7e02780d2bfc7985f
 s
 Cnavigation/src/test/java/com/fernanda/navigation/ExampleUnitTest.kt,f\d\fd367b96c0362bca96498adfe05afebae19ef477
+s
+Cdata_remote/src/main/java/com/fernanda/data_remote/core/Retrofit.kt,b\7\b717f49a71a9583035bdf487ed144d2899005ab4
+t
+Ddata_remote/src/main/java/com/fernanda/data_remote/core/Constants.kt,8\0\80b6d7fea5fbca3babbdd79f9c7927ae3ec4e0ff
+„
+Tdata_remote/src/main/java/com/fernanda/data_remote/core/AuthenticationInterceptor.kt,2\9\29dc098141b029bc504b958295618997c71e683c

@@ -18,6 +18,8 @@ http-interceptor-version = "4.10.0"
 okhttp-version = "4.11.0"
 android-splashscreen-version = "1.0.1"
 koin-version = "3.4.0"
+compose-version = "1.5.4"
+compose-activity-version = "1.8.1"
 
 [libraries]
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
@@ -46,6 +48,12 @@ android-splashscreen = { group = "androidx.core", name = "core-splashscreen", ve
 koin-core = { group = "io.insert-koin", name = "koin-core", version.ref = "koin-version" }
 koin-android = { group = "io.insert-koin", name = "koin-android", version.ref = "koin-version" }
 koin-compose = { group = "io.insert-koin", name = "koin-androidx-compose", version.ref = "koin-version" }
+compose-ui = { group = "androidx.compose.ui", name = "ui", version.ref = "compose-version" }
+compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling", version.ref = "compose-version" }
+compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview", version.ref = "compose-version" }
+compose-foundation = { group = "androidx.compose.foundation", name = "foundation", version.ref = "compose-version" }
+compose-material = { group = "androidx.compose.material", name = "material", version.ref = "compose-version" }
+compose-activity = { group = "androidx.activity", name = "activity-compose", version.ref = "compose-activity-version" }
 
 [plugins]
 com-android-application = { id = "com.android.application", version.ref = "agp" }
@@ -59,3 +67,4 @@ android-dataRemoteDependencies = ["android-gson", "android-retrofit2", "android-
     "android-gson-convert-facotory", "android-okhttp"]
 koin = ["koin-core", "koin-android", "koin-compose"]
 android-domainDependencies = ["android-gson", "koin-core"]
+android-compose = ["compose-ui", "compose-ui-tooling", "compose-ui-tooling-preview", "compose-foundation", "compose-material", "compose-activity"]

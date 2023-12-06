@@ -10,9 +10,10 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import com.fernanda.cstv.ui.theme.CSTVTheme
+import com.fernanda.uikit.theme.MyTheme
 
 class MainActivity : ComponentActivity() {
 
@@ -24,7 +25,7 @@ class MainActivity : ComponentActivity() {
             setKeepOnScreenCondition { viewModel.showSplashScreen }
         }
         setContent {
-            CSTVTheme {
+            MyTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
@@ -41,14 +42,15 @@ class MainActivity : ComponentActivity() {
 fun Greeting(name: String, modifier: Modifier = Modifier) {
     Text(
         text = "Hello $name!",
-        modifier = modifier
+        modifier = modifier,
+        color = Color.White
     )
 }
 
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
-    CSTVTheme {
+    MyTheme {
         Greeting("Android")
     }
 }

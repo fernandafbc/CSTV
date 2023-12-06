@@ -17,6 +17,7 @@ retrofit-coroutine-version = "0.9.2"
 http-interceptor-version = "4.10.0"
 okhttp-version = "4.11.0"
 android-splashscreen-version = "1.0.1"
+koin-version = "3.4.0"
 
 [libraries]
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
@@ -42,6 +43,9 @@ android-okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref 
 android-gson-convert-facotory = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit-version" }
 android-gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson-version" }
 android-splashscreen = { group = "androidx.core", name = "core-splashscreen", version.ref = "android-splashscreen-version" }
+koin-core = { group = "io.insert-koin", name = "koin-core", version.ref = "koin-version" }
+koin-android = { group = "io.insert-koin", name = "koin-android", version.ref = "koin-version" }
+koin-compose = { group = "io.insert-koin", name = "koin-androidx-compose", version.ref = "koin-version" }
 
 [plugins]
 com-android-application = { id = "com.android.application", version.ref = "agp" }
@@ -53,3 +57,5 @@ com-android-library = { id = "com.android.library", version.ref = "agp" }
 
 android-dataRemoteDependencies = ["android-gson", "android-retrofit2", "android-retrofit-coroutine", "android-http-interceptor",
     "android-gson-convert-facotory", "android-okhttp"]
+koin = ["koin-core", "koin-android", "koin-compose"]
+android-domainDependencies = ["android-gson", "koin-core"]

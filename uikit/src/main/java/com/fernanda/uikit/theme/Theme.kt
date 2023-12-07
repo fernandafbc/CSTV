@@ -11,9 +11,9 @@ import androidx.compose.ui.platform.LocalView
 
 private val colors = lightColorScheme(
     primary = Color.White,
-    secondary = SteelGray,
-    tertiary = ImperialRed,
-    background = EerieBlack,
+    secondary = CardColor,
+    tertiary = Red,
+    background = Background,
     surface = StormGray
 
 )

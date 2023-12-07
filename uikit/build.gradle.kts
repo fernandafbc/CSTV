@@ -46,6 +46,7 @@ android {
 }
 
 dependencies {
+    implementation(project(path = ":domain"))
 
     implementation(platform(libs.compose.bom))
     implementation(libs.core.ktx)

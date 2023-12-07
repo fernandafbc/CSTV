@@ -1,18 +1,19 @@
 package com.fernanda.di
 
-import com.fernanda.domain.core.ThreadContextProvider
 import com.fernanda.domain.usecase.GetMatchesListUseCase
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import org.koin.dsl.module
 
 val domainModule = module {
+
     single {
-        ThreadContextProvider()
+        CoroutineScope(Dispatchers.IO)
     }
 
-    factory { (scope: CoroutineScope) ->
+    factory {
         GetMatchesListUseCase(
-            scope = scope,
+            scope = get(),
             repository = get()
         )
     }

@@ -2,4 +2,6 @@
 <resources>
     <string name="vs">vs</string>
     <string name="matches_list_title">Partidas</string>
+    <string name="date_now">AGORA</string>
+    <string name="today">Hoje</string>
 </resources>

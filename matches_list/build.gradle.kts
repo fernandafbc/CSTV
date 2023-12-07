@@ -51,6 +51,7 @@ dependencies {
     implementation(libs.core.ktx)
     implementation(libs.appcompat)
     implementation(libs.material3)
+    implementation(libs.android.compose.paging)
     implementation(libs.bundles.android.compose)
     implementation(libs.bundles.koin)
     testImplementation(libs.junit)

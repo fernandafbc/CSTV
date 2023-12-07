@@ -8,7 +8,9 @@ interface WebService {
 
     @GET(MatchConstants.GET_MATCHES_LIST)
     suspend fun getMatchesList(
-        @Query("page") page: Int
+        @Query("page") page: Int,
+        @Query("sort") sort: String = "begin_at",
+        @Query("filter[status]") statusFilter: String = "running,not_started"
     ): List<MatchResponse>
 
     private object MatchConstants {

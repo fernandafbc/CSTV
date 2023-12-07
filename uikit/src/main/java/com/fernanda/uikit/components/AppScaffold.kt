@@ -7,7 +7,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.fernanda.uikit.theme.EerieBlack
+import com.fernanda.uikit.theme.Background
 import com.fernanda.uikit.theme.MyTheme
 
 @Composable
@@ -17,7 +17,7 @@ fun AppScaffold(content: @Composable () -> Unit) {
             Box(
                 modifier = Modifier
                     .padding(it)
-                    .background(color = EerieBlack)
+                    .background(color = Background)
                     .fillMaxSize()
             ) {
                 content()

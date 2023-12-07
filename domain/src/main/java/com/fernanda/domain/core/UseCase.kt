@@ -1,15 +1,12 @@
 package com.fernanda.domain.core
 
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.cancelChildren
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import org.koin.core.component.KoinComponent
-import org.koin.core.component.inject
 
-abstract class UseCase<T, in Params>(private val scope: CoroutineScope): KoinComponent {
-    private val contextProvider: ThreadContextProvider by inject()
+abstract class UseCase<T, in Params>(private val scope: CoroutineScope) {
 
     abstract fun run(params: Params? = null): Flow<T>
 
@@ -18,21 +15,19 @@ abstract class UseCase<T, in Params>(private val scope: CoroutineScope): KoinCom
         onError: ((Throwable) -> Unit) = {},
         onSuccess: (T) -> Unit = {}
     ) {
-        scope.launch(contextProvider.io) {
+        scope.launch(Dispatchers.IO) {
             try {
                 run(params).collect {
-                    withContext(contextProvider.main) {
+                    withContext(Dispatchers.Main) {
                         onSuccess(it)
                     }
                 }
             } catch (e: Exception) {
-                withContext(contextProvider.main) {
+                withContext(Dispatchers.Main) {
                     onError(e)
                 }
             }
         }
 
     }
-
-    fun cancel() = scope.coroutineContext.cancelChildren()
 }

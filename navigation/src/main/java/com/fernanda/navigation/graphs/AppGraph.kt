@@ -37,11 +37,11 @@ private fun NavGraphBuilder.addMatchDetails() {
             listOf(match_id, match_league)
         ),
         arguments = listOf(
-            navArgument(match_id) { type = NavType.LongType },
+            navArgument(match_id) { type = NavType.StringType },
             navArgument(match_league) { type = NavType.StringType }
         ),
         content = {
-            val id = it.arguments?.getLong(match_id) ?: 0
+            val id = it.arguments?.getString(match_id).orEmpty()
             val league = it.arguments?.getString(match_league).orEmpty()
             MatchDetailsScreen(matchId = id, matchLeague = league)
         }

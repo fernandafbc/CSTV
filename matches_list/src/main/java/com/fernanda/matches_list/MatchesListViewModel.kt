@@ -16,17 +16,17 @@ import org.koin.core.component.inject
 class MatchesListViewModel : ViewModel(), KoinComponent {
     private val getMatchesListUseCase: GetMatchesListUseCase by inject()
     private val navigation: MatchesListNavigation by inject()
-    private val _matchesList: MutableStateFlow<PagingData<MatchModel>> = MutableStateFlow(
+    private val _matchesListState: MutableStateFlow<PagingData<MatchModel>> = MutableStateFlow(
         PagingData.empty()
     )
-    val matchesList = _matchesList.asStateFlow()
+    val matchesList = _matchesListState.asStateFlow()
 
     suspend fun getMatchesList() {
         getMatchesListUseCase.run()
             .distinctUntilChanged()
             .cachedIn(viewModelScope)
             .collectLatest {
-                _matchesList.value = it
+                _matchesListState.value = it
             }
     }
 

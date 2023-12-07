@@ -20,4 +20,6 @@ class MatchRepositoryImpl(
             }
         ).flow
     }
+
+    override fun getMatchDetails(id: String) = dataSource.getMatchDetails(id)
 }

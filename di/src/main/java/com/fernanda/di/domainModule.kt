@@ -1,5 +1,6 @@
 package com.fernanda.di
 
+import com.fernanda.domain.usecase.GetMatchDetailsUseCase
 import com.fernanda.domain.usecase.GetMatchesListUseCase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -13,6 +14,13 @@ val domainModule = module {
 
     factory {
         GetMatchesListUseCase(
+            scope = get(),
+            repository = get()
+        )
+    }
+
+    factory {
+        GetMatchDetailsUseCase(
             scope = get(),
             repository = get()
         )

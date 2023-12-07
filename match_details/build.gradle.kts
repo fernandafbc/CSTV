@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.fernanda.di"
+    namespace = "com.fernanda.match_details"
     compileSdk = 33
 
     defaultConfig {
@@ -31,21 +31,29 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    buildFeatures {
+        compose = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.4.4"
+    }
+    packaging {
+        resources {
+            excludes += "/META-INF/{AL2.0,LGPL2.1}"
+        }
+    }
 }
 
 dependencies {
-    implementation(project(path = ":navigation"))
+    implementation(project(path = ":uikit"))
     implementation(project(path = ":domain"))
-    implementation(project(path = ":data"))
-    implementation(project(path = ":data_remote"))
-    implementation(project(path = ":matches_list"))
-    implementation(project(path = ":match_details"))
 
     implementation(libs.core.ktx)
     implementation(libs.appcompat)
     implementation(libs.material)
-    implementation(libs.bundles.koin)
     testImplementation(libs.junit)
+    implementation(libs.bundles.android.compose)
+    implementation(libs.bundles.koin)
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)
 }

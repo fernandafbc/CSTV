@@ -47,6 +47,7 @@ android {
 dependencies {
     implementation(project(path = ":domain"))
     implementation(project(path = ":matches_list"))
+    implementation(project(path = ":match_details"))
 
     implementation(libs.core.ktx)
     implementation(libs.appcompat)

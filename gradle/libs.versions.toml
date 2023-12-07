@@ -22,6 +22,8 @@ compose-version = "1.5.4"
 compose-activity-version = "1.8.1"
 coroutine-version = "1.6.0"
 paging-version = "3.1.0"
+compose-navigation-version = "2.6.0"
+coil-version = "2.4.0"
 
 [libraries]
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
@@ -58,6 +60,8 @@ compose-material = { group = "androidx.compose.material", name = "material", ver
 compose-activity = { group = "androidx.activity", name = "activity-compose", version.ref = "compose-activity-version" }
 android-coroutine = {group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutine-version"}
 paging-common-ktx = { group = "androidx.paging", name = "paging-common-ktx", version.ref = "paging-version"}
+compose-navigation = { group = "androidx.navigation", name = "navigation-compose", version.ref = "compose-navigation-version" }
+coil = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil-version" }
 
 [plugins]
 com-android-application = { id = "com.android.application", version.ref = "agp" }

@@ -38,6 +38,7 @@ dependencies {
     implementation(project(path = ":domain"))
     implementation(project(path = ":data"))
     implementation(project(path = ":data_remote"))
+    implementation(project(path = ":matches_list"))
 
     implementation(libs.core.ktx)
     implementation(libs.appcompat)

@@ -53,6 +53,7 @@ dependencies {
     implementation(libs.material)
     implementation(libs.bundles.android.compose)
     implementation(libs.material3)
+    implementation(libs.coil)
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)
 }

@@ -6,4 +6,6 @@ plugins {
 
 dependencies {
     api(project(path = ":domain"))
+
+    implementation(libs.bundles.android.domainDependencies)
 }

@@ -20,6 +20,8 @@ android-splashscreen-version = "1.0.1"
 koin-version = "3.4.0"
 compose-version = "1.5.4"
 compose-activity-version = "1.8.1"
+coroutine-version = "1.6.0"
+paging-version = "3.1.0"
 
 [libraries]
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
@@ -54,6 +56,8 @@ compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling
 compose-foundation = { group = "androidx.compose.foundation", name = "foundation", version.ref = "compose-version" }
 compose-material = { group = "androidx.compose.material", name = "material", version.ref = "compose-version" }
 compose-activity = { group = "androidx.activity", name = "activity-compose", version.ref = "compose-activity-version" }
+android-coroutine = {group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutine-version"}
+paging-common-ktx = { group = "androidx.paging", name = "paging-common-ktx", version.ref = "paging-version"}
 
 [plugins]
 com-android-application = { id = "com.android.application", version.ref = "agp" }
@@ -66,5 +70,5 @@ com-android-library = { id = "com.android.library", version.ref = "agp" }
 android-dataRemoteDependencies = ["android-gson", "android-retrofit2", "android-retrofit-coroutine", "android-http-interceptor",
     "android-gson-convert-facotory", "android-okhttp"]
 koin = ["koin-core", "koin-android", "koin-compose"]
-android-domainDependencies = ["android-gson", "koin-core"]
+android-domainDependencies = ["android-gson", "koin-core", "android-coroutine", "paging-common-ktx"]
 android-compose = ["compose-ui", "compose-ui-tooling", "compose-ui-tooling-preview", "compose-foundation", "compose-material", "compose-activity"]

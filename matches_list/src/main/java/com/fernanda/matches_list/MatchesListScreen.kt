@@ -37,6 +37,7 @@ import com.fernanda.uikit.components.MatchCard
 import com.fernanda.uikit.theme.Silver
 import com.fernanda.uikit.theme.StormGray
 import com.fernanda.uikit.theme.Typography
+import com.fernanda.uikit.utils.FadingAnimation
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.koin.androidx.compose.getViewModel
@@ -69,9 +70,11 @@ fun MatchesListScreen(
             modifier = Modifier
                 .fillMaxSize()
         ) {
-            if (isRefreshLoading) {
-                ProgressIndicator(modifier = Modifier.align(Alignment.Center))
-            } else {
+            ProgressIndicator(
+                modifier = Modifier.align(Alignment.Center),
+                isVisible = isRefreshLoading
+            )
+            FadingAnimation(visible = isRefreshLoading.not()) {
                 MatchesList(matchesList, pullState) { matchModel ->
                     viewModel.goToMatchDetails(
                         matchId = matchModel?.id ?: 0,
@@ -80,9 +83,11 @@ fun MatchesListScreen(
                     )
                 }
             }
-            if (isAppendLoading) {
-                ProgressIndicator(modifier = Modifier.align(Alignment.Center))
-            }
+            ProgressIndicator(
+                modifier = Modifier.align(Alignment.Center),
+                isVisible = isAppendLoading
+            )
+
             PullRefreshIndicator(
                 modifier = Modifier.align(Alignment.TopCenter),
                 refreshing = refreshing,
@@ -137,10 +142,11 @@ private fun MatchesList(
 }
 
 @Composable
-private fun ProgressIndicator(modifier: Modifier) {
-    CircularProgressIndicator(
-        modifier = modifier,
-        color = Silver,
-        backgroundColor = StormGray
-    )
+private fun ProgressIndicator(modifier: Modifier, isVisible: Boolean) {
+    FadingAnimation(visible = isVisible, modifier = modifier) {
+        CircularProgressIndicator(
+            color = Silver,
+            backgroundColor = StormGray
+        )
+    }
 }

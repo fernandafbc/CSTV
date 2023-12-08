@@ -4,7 +4,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import com.fernanda.domain.model.MatchDetailsModel
 import com.fernanda.domain.usecase.GetMatchDetailsUseCase
-import kotlinx.coroutines.flow.collectLatest
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
@@ -13,12 +12,18 @@ class MatchDetailsViewModel : ViewModel(), KoinComponent {
     private val navigation: MatchDetailsNavigation by inject()
 
     private val _matchDetailsState = mutableStateOf(MatchDetailsModel())
+    private val _isLoading = mutableStateOf(true)
     val matchDetails get() = _matchDetailsState.value
+    val isLoading get() = _isLoading.value
 
-    suspend fun getMatchDetails(matchId: String) {
-        getMatchDetailsUseCase.run(matchId).collectLatest {
-            _matchDetailsState.value = it
-        }
+    fun getMatchDetails(matchId: String) {
+        getMatchDetailsUseCase(
+            params = matchId,
+            onSuccess = {
+                _matchDetailsState.value = it
+                _isLoading.value = false
+            }
+        )
     }
 
     fun popBackStack() {

@@ -117,7 +117,7 @@ private fun TeamInfo(
     ) {
         SubcomposeAsyncImage(
             model = logo,
-            contentDescription = null
+            contentDescription = stringResource(id = R.string.team_logo_description)
         ) {
             val state = painter.state
             if (state is AsyncImagePainter.State.Loading || state is AsyncImagePainter.State.Error) {
@@ -147,7 +147,7 @@ private fun LeagueSeries(
     ) {
         SubcomposeAsyncImage(
             model = logo,
-            contentDescription = null,
+            contentDescription = stringResource(id = R.string.league_logo_description),
             modifier = Modifier
                 .padding(horizontal = 8.dp)
         ) {

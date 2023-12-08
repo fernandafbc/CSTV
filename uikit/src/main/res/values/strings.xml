@@ -4,4 +4,8 @@
     <string name="matches_list_title">Partidas</string>
     <string name="date_now">AGORA</string>
     <string name="today">Hoje</string>
+    <string name="team_logo_description">Logo do time</string>
+    <string name="league_logo_description">Logo da liga</string>
+    <string name="player_photo_description">Foto do jogador</string>
+    <string name="navigation_icon_description">Ícone de voltar</string>
 </resources>

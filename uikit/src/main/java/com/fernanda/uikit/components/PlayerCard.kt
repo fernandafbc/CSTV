@@ -20,6 +20,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
@@ -28,6 +29,7 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImagePainter
 import coil.compose.SubcomposeAsyncImage
 import coil.compose.SubcomposeAsyncImageContent
+import com.fernanda.uikit.R
 import com.fernanda.uikit.theme.Background
 import com.fernanda.uikit.theme.CardColor
 import com.fernanda.uikit.theme.Silver
@@ -118,7 +120,7 @@ private fun PlayerPhoto(
 ) {
     SubcomposeAsyncImage(
         model = photo,
-        contentDescription = null,
+        contentDescription = stringResource(id = R.string.player_photo_description),
         modifier = modifier
             .height(58.dp)
             .padding(bottom = 8.dp, start = 10.dp, end = 10.dp)

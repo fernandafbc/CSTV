@@ -85,12 +85,13 @@ fun MatchDetailsScreen(
             }
             FadingAnimation(
                 visible = viewModel.isLoading,
-                modifier = Modifier.align(Alignment.Center)) {
-                    CircularProgressIndicator(
-                        color = Silver,
-                        backgroundColor = StormGray
-                    )
-                }
+                modifier = Modifier.align(Alignment.Center)
+            ) {
+                CircularProgressIndicator(
+                    color = Silver,
+                    backgroundColor = StormGray
+                )
+            }
         }
     }
 }
@@ -105,7 +106,7 @@ private fun Header(matchLeague: String, onNavigationIconClick: () -> Unit) {
     ) {
         Icon(
             painter = painterResource(id = R.drawable.ic_arrow_left),
-            contentDescription = null,
+            contentDescription = stringResource(id = R.string.navigation_icon_description),
             tint = Color.White,
             modifier = Modifier
                 .size(24.dp)

@@ -28,7 +28,6 @@ import androidx.compose.ui.unit.dp
 import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
-import androidx.paging.compose.items
 import com.fernanda.domain.model.MatchModel
 import com.fernanda.domain.model.MatchStatus
 import com.fernanda.uikit.R
@@ -121,7 +120,9 @@ private fun MatchesList(
             )
         }
 
-        items(matchesList) { matchModel ->
+        items(matchesList.itemCount) { index ->
+            val matchModel = matchesList[index]
+
             MatchCard(
                 modifier = Modifier
                     .padding(bottom = 24.dp)

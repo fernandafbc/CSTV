@@ -20,11 +20,11 @@ android-splashscreen-version = "1.0.1"
 koin-version = "3.4.0"
 compose-version = "1.5.4"
 compose-activity-version = "1.8.1"
-coroutine-version = "1.6.0"
-paging-version = "3.1.0"
-compose-navigation-version = "2.6.0"
+coroutine-version = "1.7.3"
+paging-version = "3.2.1"
+compose-navigation-version = "2.7.5"
 coil-version = "2.4.0"
-compose-paging-version = "1.0.0-alpha18"
+compose-paging-version = "3.3.0-alpha02"
 
 [libraries]
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }

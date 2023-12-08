@@ -25,6 +25,8 @@ paging-version = "3.2.1"
 compose-navigation-version = "2.7.5"
 coil-version = "2.4.0"
 compose-paging-version = "3.3.0-alpha02"
+mockito-kotlin-version = "4.1.0"
+mockito-inline-kotlin-version = "2.21.0"
 
 [libraries]
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
@@ -59,11 +61,13 @@ compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling
 compose-foundation = { group = "androidx.compose.foundation", name = "foundation", version.ref = "compose-version" }
 compose-material = { group = "androidx.compose.material", name = "material", version.ref = "compose-version" }
 compose-activity = { group = "androidx.activity", name = "activity-compose", version.ref = "compose-activity-version" }
-android-coroutine = {group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutine-version"}
-paging-common-ktx = { group = "androidx.paging", name = "paging-common-ktx", version.ref = "paging-version"}
+android-coroutine = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutine-version" }
+paging-common-ktx = { group = "androidx.paging", name = "paging-common-ktx", version.ref = "paging-version" }
 compose-navigation = { group = "androidx.navigation", name = "navigation-compose", version.ref = "compose-navigation-version" }
 coil = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil-version" }
-android-compose-paging = {group = "androidx.paging", name = "paging-compose", version.ref = "compose-paging-version"}
+android-compose-paging = { group = "androidx.paging", name = "paging-compose", version.ref = "compose-paging-version" }
+android-mockito-kotlin = { group = "org.mockito.kotlin", name = "mockito-kotlin", version.ref = "mockito-kotlin-version" }
+android-mockito-inline-kotlin = { group = "org.mockito", name = "mockito-inline", version.ref = "mockito-inline-kotlin-version" }
 
 [plugins]
 com-android-application = { id = "com.android.application", version.ref = "agp" }
@@ -78,3 +82,4 @@ android-dataRemoteDependencies = ["android-gson", "android-retrofit2", "android-
 koin = ["koin-core", "koin-android", "koin-compose"]
 android-domainDependencies = ["android-gson", "koin-core", "android-coroutine", "paging-common-ktx"]
 android-compose = ["compose-ui", "compose-ui-tooling", "compose-ui-tooling-preview", "compose-foundation", "compose-material", "compose-activity"]
+mockito = ["android-mockito-kotlin", "android-mockito-inline-kotlin"]

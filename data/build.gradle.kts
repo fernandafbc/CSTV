@@ -8,4 +8,6 @@ dependencies {
     api(project(path = ":domain"))
 
     implementation(libs.bundles.android.domainDependencies)
+    testImplementation(libs.junit)
+    testImplementation(libs.bundles.mockito)
 }

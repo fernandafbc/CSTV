@@ -21,6 +21,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -90,6 +91,8 @@ private fun PlayerName(
             style = Typography.bodyLarge,
             color = Color.White,
             textAlign = textAlign,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis,
             modifier = Modifier
                 .padding(start = startPadding, end = endPadding)
                 .fillMaxWidth()
@@ -99,6 +102,8 @@ private fun PlayerName(
             style = Typography.labelLarge,
             color = StormGray,
             textAlign = textAlign,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis,
             modifier = Modifier
                 .padding(bottom = 8.dp, start = startPadding, end = endPadding)
                 .fillMaxWidth()

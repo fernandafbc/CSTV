@@ -83,7 +83,7 @@ fun MatchCard(
 }
 
 @Composable
-private fun TeamsRow(
+fun TeamsRow(
     firstLogo: String,
     firstName: String,
     secondLogo: String,

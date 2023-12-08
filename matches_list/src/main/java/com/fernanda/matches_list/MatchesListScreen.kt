@@ -72,8 +72,9 @@ fun MatchesListScreen(
                                 indication = null,
                                 interactionSource = remember { MutableInteractionSource() }) {
                                 viewModel.goToMatchDetails(
-                                    matchModel?.id ?: 0,
-                                    matchModel?.league?.name.orEmpty() + matchModel?.serie?.fullName.orEmpty()
+                                    matchId = matchModel?.id ?: 0,
+                                    matchLeague = matchModel?.league?.name.orEmpty() + matchModel?.serie?.fullName.orEmpty(),
+                                    matchDate = matchModel?.beginAt.orEmpty()
                                 )
                             },
                         beginDate = matchModel?.beginAt.orEmpty(),

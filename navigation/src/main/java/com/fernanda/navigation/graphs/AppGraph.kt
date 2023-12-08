@@ -8,6 +8,7 @@ import androidx.navigation.navigation
 import com.fernanda.match_details.MatchDetailsScreen
 import com.fernanda.matches_list.MatchesListScreen
 import com.fernanda.navigation.core.Destination
+import com.fernanda.navigation.core.NavigationConstants.match_date
 import com.fernanda.navigation.core.NavigationConstants.match_id
 import com.fernanda.navigation.core.NavigationConstants.match_league
 import com.fernanda.navigation.routes.Routes
@@ -34,16 +35,18 @@ private fun NavGraphBuilder.addMatchesList() {
 private fun NavGraphBuilder.addMatchDetails() {
     composable(
         route = Routes.MatchDetails.createRouteWithArgs(
-            listOf(match_id, match_league)
+            listOf(match_id, match_league, match_date)
         ),
         arguments = listOf(
             navArgument(match_id) { type = NavType.StringType },
-            navArgument(match_league) { type = NavType.StringType }
+            navArgument(match_league) { type = NavType.StringType },
+            navArgument(match_date) { type = NavType.StringType }
         ),
         content = {
             val id = it.arguments?.getString(match_id).orEmpty()
             val league = it.arguments?.getString(match_league).orEmpty()
-            MatchDetailsScreen(matchId = id, matchLeague = league)
+            val date = it.arguments?.getString(match_date).orEmpty()
+            MatchDetailsScreen(matchId = id, matchLeague = league, matchDate = date)
         }
     )
 }

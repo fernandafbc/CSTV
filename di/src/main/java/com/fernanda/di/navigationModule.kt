@@ -1,7 +1,9 @@
 package com.fernanda.di
 
+import com.fernanda.match_details.MatchDetailsNavigation
 import com.fernanda.matches_list.MatchesListNavigation
 import com.fernanda.navigation.core.NavigationManager
+import com.fernanda.navigation.navigation.MatchDetailsNavigationImpl
 import com.fernanda.navigation.navigation.MatchesListNavigationImpl
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -18,4 +20,5 @@ val navigationModule = module {
     }
 
     single<MatchesListNavigation> { MatchesListNavigationImpl(get()) }
+    single<MatchDetailsNavigation> { MatchDetailsNavigationImpl(get()) }
 }

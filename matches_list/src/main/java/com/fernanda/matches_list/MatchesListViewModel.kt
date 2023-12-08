@@ -30,7 +30,7 @@ class MatchesListViewModel : ViewModel(), KoinComponent {
             }
     }
 
-    fun goToMatchDetails(matchId: Long, matchLeague: String) {
-        navigation.goToMatchDetails(matchId, matchLeague)
+    fun goToMatchDetails(matchId: Long, matchLeague: String, matchDate: String) {
+        navigation.goToMatchDetails(matchId, matchLeague, matchDate)
     }
 }

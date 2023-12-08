@@ -7,10 +7,10 @@ import com.fernanda.navigation.routes.Routes
 class MatchesListNavigationImpl(
     private val navigationManager: NavigationManager
 ) : MatchesListNavigation {
-    override fun goToMatchDetails(matchId: Long, matchLeague: String) {
+    override fun goToMatchDetails(matchId: Long, matchLeague: String, matchDate: String) {
         navigationManager.navigate(
             route = Routes.MatchDetails.putArgs(
-                args = listOf(matchId.toString(), matchLeague)
+                args = listOf(matchId.toString(), matchLeague, matchDate)
             )
         )
     }

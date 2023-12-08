@@ -50,7 +50,7 @@ dependencies {
 
     implementation(libs.core.ktx)
     implementation(libs.appcompat)
-    implementation(libs.material)
+    implementation(libs.material3)
     testImplementation(libs.junit)
     implementation(libs.bundles.android.compose)
     implementation(libs.bundles.koin)

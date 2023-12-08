@@ -1,8 +1,10 @@
 package com.fernanda.matches_list
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -24,20 +26,28 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.paging.LoadState
+import androidx.paging.PagingData
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
+import com.fernanda.domain.model.LeagueModel
 import com.fernanda.domain.model.MatchModel
 import com.fernanda.domain.model.MatchStatus
+import com.fernanda.domain.model.SerieModel
+import com.fernanda.domain.model.TeamDetailsModel
+import com.fernanda.domain.model.TeamModel
 import com.fernanda.uikit.R
 import com.fernanda.uikit.components.AppScaffold
 import com.fernanda.uikit.components.MatchCard
+import com.fernanda.uikit.theme.Background
 import com.fernanda.uikit.theme.Silver
 import com.fernanda.uikit.theme.StormGray
 import com.fernanda.uikit.theme.Typography
 import com.fernanda.uikit.utils.FadingAnimation
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.launch
 import org.koin.androidx.compose.getViewModel
 
@@ -149,5 +159,76 @@ private fun ProgressIndicator(modifier: Modifier, isVisible: Boolean) {
             color = Silver,
             backgroundColor = StormGray
         )
+    }
+}
+
+@OptIn(ExperimentalMaterialApi::class)
+@Composable
+@Preview(showBackground = true)
+private fun MatchesListScreenPreview() {
+    Column(
+        modifier = Modifier
+            .background(color = Background)
+            .fillMaxSize()
+    ) {
+        val pullState = rememberPullRefreshState(false, onRefresh = {})
+        val matchesList = flowOf(
+            PagingData.from(
+                listOf(
+                    MatchModel(
+                        beginAt = "2023-12-08T15:04:29Z",
+                        league = LeagueModel(name = "League"),
+                        serie = SerieModel(fullName = "serie"),
+                        teams = listOf(
+                            TeamModel(
+                                TeamDetailsModel(
+                                    name = "Time 1"
+                                )
+                            ),
+                            TeamModel(
+                                TeamDetailsModel(
+                                    name = "Time 2"
+                                )
+                            )
+                        )
+                    ),
+                    MatchModel(
+                        beginAt = "2023-12-10T15:04:29Z",
+                        league = LeagueModel(name = "League"),
+                        serie = SerieModel(fullName = "serie"),
+                        teams = listOf(
+                            TeamModel(
+                                TeamDetailsModel(
+                                    name = "Time 1"
+                                )
+                            ),
+                            TeamModel(
+                                TeamDetailsModel(
+                                    name = "Time 2"
+                                )
+                            )
+                        )
+                    ),
+                    MatchModel(
+                        beginAt = "2023-12-20T15:04:29Z",
+                        league = LeagueModel(name = "League"),
+                        serie = SerieModel(fullName = "serie"),
+                        teams = listOf(
+                            TeamModel(
+                                TeamDetailsModel(
+                                    name = "Time 1"
+                                )
+                            ),
+                            TeamModel(
+                                TeamDetailsModel(
+                                    name = "Time 2"
+                                )
+                            )
+                        )
+                    )
+                )
+            )
+        ).collectAsLazyPagingItems()
+        MatchesList(matchesList, pullState) {}
     }
 }

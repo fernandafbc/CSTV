@@ -1,5 +1,6 @@
 package com.fernanda.match_details
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
@@ -25,13 +26,16 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.fernanda.domain.model.MatchDetailsTeamModel
 import com.fernanda.domain.model.PlayerModel
 import com.fernanda.domain.utils.getDate
 import com.fernanda.uikit.R
 import com.fernanda.uikit.components.AppScaffold
 import com.fernanda.uikit.components.PlayerCard
 import com.fernanda.uikit.components.TeamsRow
+import com.fernanda.uikit.theme.Background
 import com.fernanda.uikit.theme.Silver
 import com.fernanda.uikit.theme.StormGray
 import com.fernanda.uikit.theme.Typography
@@ -61,27 +65,12 @@ fun MatchDetailsScreen(
                     onNavigationIconClick = { viewModel.popBackStack() })
                 val firstTeam = viewModel.matchDetails.teams.firstOrNull()
                 val secondTeam = viewModel.matchDetails.teams.lastOrNull()
-                SlideHorizontalAnimation(visible = viewModel.isLoading.not()) {
-                    TeamsRow(
-                        firstLogo = firstTeam?.image.orEmpty(),
-                        firstName = firstTeam?.name.orEmpty(),
-                        secondLogo = secondTeam?.image.orEmpty(),
-                        secondName = secondTeam?.name.orEmpty()
-                    )
-                }
-                MatchDate(matchDate = matchDate)
-                SlideHorizontalAnimation(visible = viewModel.isLoading.not()) {
-                    Column(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .verticalScroll(rememberScrollState())
-                    ) {
-                        AllPlayers(
-                            firstTeamPlayers = firstTeam?.players ?: emptyList(),
-                            secondTeamPlayers = secondTeam?.players ?: emptyList()
-                        )
-                    }
-                }
+                Body(
+                    firstTeam = firstTeam,
+                    secondTeam = secondTeam,
+                    matchDate = matchDate,
+                    isLoading = viewModel.isLoading
+                )
             }
             FadingAnimation(
                 visible = viewModel.isLoading,
@@ -128,6 +117,36 @@ private fun Header(matchLeague: String, onNavigationIconClick: () -> Unit) {
 }
 
 @Composable
+private fun Body(
+    firstTeam: MatchDetailsTeamModel?,
+    secondTeam: MatchDetailsTeamModel?,
+    matchDate: String,
+    isLoading: Boolean
+) {
+    SlideHorizontalAnimation(visible = isLoading.not()) {
+        TeamsRow(
+            firstLogo = firstTeam?.image.orEmpty(),
+            firstName = firstTeam?.name.orEmpty(),
+            secondLogo = secondTeam?.image.orEmpty(),
+            secondName = secondTeam?.name.orEmpty()
+        )
+    }
+    MatchDate(matchDate = matchDate)
+    SlideHorizontalAnimation(visible = isLoading.not()) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .verticalScroll(rememberScrollState())
+        ) {
+            AllPlayers(
+                firstTeamPlayers = firstTeam?.players ?: emptyList(),
+                secondTeamPlayers = secondTeam?.players ?: emptyList()
+            )
+        }
+    }
+}
+
+@Composable
 private fun MatchDate(matchDate: String) {
     Text(
         text = matchDate.getDate(stringResource(id = R.string.today)),
@@ -165,5 +184,39 @@ private fun TeamPlayers(players: List<PlayerModel>, isLeftCard: Boolean, modifie
             )
             Spacer(modifier = Modifier.size(12.dp))
         }
+    }
+}
+
+@Composable
+@Preview(showBackground = true)
+private fun MatchDetailsScreen() {
+    Column(
+        Modifier
+            .background(color = Background)
+            .fillMaxSize()
+    ) {
+        Header(matchLeague = "League + serie") {}
+        val firstTeam = MatchDetailsTeamModel(
+            name = "Time 1",
+            players = listOf(
+                PlayerModel("Nome jogador", nickname = "Nickname"),
+                PlayerModel("Nome jogador", nickname = "Nickname"),
+                PlayerModel("Nome jogador", nickname = "Nickname")
+            )
+        )
+        val secondTeam = MatchDetailsTeamModel(
+            name = "Time 2",
+            players = listOf(
+                PlayerModel("Nome jogador", nickname = "Nickname"),
+                PlayerModel("Nome jogador", nickname = "Nickname"),
+                PlayerModel("Nome jogador", nickname = "Nickname")
+            )
+        )
+        Body(
+            firstTeam = firstTeam,
+            secondTeam = secondTeam,
+            matchDate = "2023-12-08T15:04:29Z",
+            isLoading = false
+        )
     }
 }

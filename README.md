@@ -14,6 +14,7 @@ CSTV is an Android app that provides a convenient way to keep track of CS:GO mat
 - **Gson**: A library for JSON serialization/deserialization.
 - **Paging**: A library for loading large data sets efficiently.
 - **Coil**: Image loading library for Android.
+- **Mockito**: Mocking framework for unit testing in Java.
 
 ## Architecture
 
